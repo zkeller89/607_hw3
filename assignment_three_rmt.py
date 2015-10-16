@@ -48,13 +48,12 @@ v = v/np.sqrt(n / 2)
 # -2+2*delta, ..., 2]
 # Note: both 2 and -2 are to be included
 bins = np.linspace(-2, 2, num=21, endpoint = True)
-
 # compute histogram
 hist, bin_edges = np.histogram(v, bins=bins)
 
 # TASK 1.4.2
 # plot bar chart
-plt.bar(bin_edges[:-1], hist, width=delta, facecolor='y')
+plt.bar(bin_edges[:-1], hist/(t*n*delta), width=delta, facecolor='y')
 
 # plot theoretical prediction, i.e., the semicircle law
 plt.plot(bin_edges, np.sqrt(4-bin_edges**2)/(2*np.pi), linewidth=2)
@@ -73,14 +72,14 @@ v1 = (v1 - 2*np.sqrt(n)) * n**(1./6)
 # set histogram bin values to a numpy array containing [-5, -5+delta,
 # -5+2*delta, ..., 2]
 # Note: both -5 and 2 are to be included
-bins = np.linspace(-2, 2, num=36, endpoint = True)
+bins = np.linspace(-5, 2, num=36, endpoint = True)
 
 # compute histogram
 hist, bin_edges = np.histogram(v1, bins=bins)
 
 # TASK 1.6.2
 # plot bar chart
-plt.bar(bin_edges[:-1], hist, width=delta, facecolor='y')
+plt.bar(bin_edges[:-1], hist/(t*delta), width=delta, facecolor='y')
 
 # load theoretical prediction, i.e., the Tracy-Widom law, from file
 prediction = np.loadtxt('tracy-widom.csv', delimiter=',')
